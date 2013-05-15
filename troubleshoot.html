@@ -25,7 +25,13 @@
 <td>Defines localStorage:</td><td><script>if (window.localStorage) { document.write("Yes"); } else { document.write("No") }</script></td>
 </tr>
 <tr>
+<td>Supports localStorage</td><td id="localStorage-worked">No</td>
+</tr>
+<tr>
 <td>Defines sessionStorage:</td><td><script>if (window.sessionStorage) { document.write("Yes"); } else { document.write("No") }</script></td>
+</tr>
+<tr>
+<td>Supports sessionStorage</td><td id="sessionStorage-worked">No</td>
 </tr>
 <tr>
 <td>Defines postMessage:</td><td><script>if (window.postMessage) { document.write("Yes"); } else { document.write("No") }</script></td>
@@ -85,6 +91,21 @@ if (navigator.appName === 'Microsoft Internet Explorer') {
   }
   $('#ieversion').text(rv);
 }
+
+if (window.localStorage) {
+  window.localStorage.setItem("secret local stash", "my local secret");
+  if ("my local secret" == window.localStorage.getItem("secret local stash")) {
+    $('#localStorage-worked').text('Yes');
+  }
+}
+
+if (window.sessionStorage) {
+  window.sessionStorage.setItem("secret session stash", "my session secret");
+  if ("my session secret" == window.sessionStorage.getItem("secret session stash")) {
+    $('#sessionStorage-worked').text('Yes');
+  }
+}
+
 </script>
 
 </body>
